@@ -1,0 +1,4 @@
+learning_rate choice [1e-2,1e-3,1e-4]
+embedding_size choice [10,32,64]
+mlp_hidden_size choice ['[64,64,64]','[128,128]','[256,256]']
+train_batch_size choice [512, 1024, 2048]

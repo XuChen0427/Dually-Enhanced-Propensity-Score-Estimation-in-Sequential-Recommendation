@@ -1,0 +1,92 @@
+# model config
+n_layers: 2
+n_heads: 2
+embedding_size: 32
+hidden_size: 64
+inner_size: 256
+hidden_dropout_prob: 0.5
+attn_dropout_prob: 0.5
+hidden_act: 'gelu'
+layer_norm_eps: 1e-12
+initializer_range: 0.02
+mask_ratio: 0.05
+
+IPS_training_rate: 1
+
+max_mask_ratio: 0.25
+min_mask_ratio: 0.05
+
+IPS_factor: 0.1
+mlm_factor: 0.002
+
+dropout_prob: 0.3
+IPS_clip: 0.1
+
+IPS_max_clip: 1
+show_progress: True
+
+schedule: 'constant'
+min_lr: 1e-4
+warmup_rate: 0.15
+inters_num: 94148
+
+
+clip_grad_norm:  {'max_norm': 5, 'norm_type': 2}
+
+
+#mlp_hidden_size: [768,256]
+mlp_hidden_size: [128,256]
+
+alpha: 0.5
+pooling_mode: 'mean'
+
+
+benchmark_filename: ['train','valid','test']
+field_separator: "\t" #指定数据集field的分隔符
+seq_separator: " " #指定数据集中token_seq或者float_seq域里的分隔符
+USER_ID_FIELD: user_id #指定用户id域
+ITEM_ID_FIELD: item_id #指定物品id域
+RATING_FIELD: rating #指定打分rating域
+TIME_FIELD: timestamp #指定时间域
+NEG_PREFIX: neg_ #指定负采样前缀
+LABEL_FIELD: label #指定标签域
+ITEM_LIST_LENGTH_FIELD: item_length #指定序列长度域
+USER_LIST_LENGTH_FIELD: user_length #指定序列长度域
+LIST_SUFFIX: _list #指定序列前缀
+
+MAX_ITEM_LIST_LENGTH: 50 #指定最大序列长度
+MAX_USER_LIST_LENGTH: 30 #指定用户最大序列长度
+
+POSITION_FIELD: position_id #指定生成的序列位置id
+#指定从什么文件里读什么列，这里就是从ml-1m.inter里面读取user_id, item_id, rating, timestamp这四列,剩下的以此类推
+alias_of_user_id: ['user_id_list']
+alias_of_item_id: ['item_id_list']
+load_col:
+  inter: [user_id, item_id, label, timestamp, item_id_list, user_id_list]
+
+# training settings
+#inters_num: 5843444
+
+epochs: 300 #训练的最大轮数
+train_batch_size: 2048  #训练的batch_size
+learner: adam #使用的pytorch内置优化器
+learning_rate: 1e-3 #学习率
+eval_step: 3 #每次训练后做evalaution的次数
+stopping_step: 500 #控制训练收敛的步骤数，在该步骤数内若选取的评测标准没有什么变化，就可以提前停止了
+# evalution settings
+eval_args:
+  split: {'RS': [0.8,0.1,0.1]}
+  group_by: ~
+  order: TO
+  mode: uni100
+
+metrics: ["Recall", "MRR","NDCG","Hit","Precision"] #评测标准
+valid_metric: MRR@10 #选取哪个评测标准作为作为提前停止训练的标准
+
+topk: [2,5,10,20]
+
+eval_batch_size: 2048 #评测的batch_size
+neg_sampling:
+  uniform: 1
+
+gpu_id: 1

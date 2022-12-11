@@ -1,0 +1,2 @@
+learning_rate choice [1e-3,1e-4]
+train_batch_size choice [512, 1024]
