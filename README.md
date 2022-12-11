@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Dually Enhanced Propensity Score Estimation in Sequential Recommendation
 ## Xu Chen, joint Ph.D. student of Renming University of China, GSAI and University of Montreal, RALI
 Any question, please mail to xc_chen@ruc.edu.cn or chen.xu@umontreal.ca\
@@ -59,9 +60,14 @@ series = {CIKM '22}
 
 ```
 =======
+=======
+>>>>>>> d343fc337ce05b6abea54bf066f74fd9cbbb156c
 # Dually-Enhanced-Propensity-Score-Estimation-in-Sequential-Recommendation
 The implementation of paper Dually Enhanced Propensity Score Estimation in Sequential Recommendation in CIKM2022
 
 Implemented by Chen Xu, Gaoling school of Artificial Intelligence, Renmin University of China, China.
 The code implementation will be public after the Conference of CIKM2022.
+<<<<<<< HEAD
+>>>>>>> d343fc337ce05b6abea54bf066f74fd9cbbb156c
+=======
 >>>>>>> d343fc337ce05b6abea54bf066f74fd9cbbb156c
